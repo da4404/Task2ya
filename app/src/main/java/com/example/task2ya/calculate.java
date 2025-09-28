@@ -55,8 +55,7 @@ public class calculate extends AppCompatActivity
                 return "Single solution: x = " + x;
             }
         }
-
-        double delta = b * b - 4 * a * c;
+         double delta = b * b - 4 * a * c;
 
         if (delta < 0)
         {

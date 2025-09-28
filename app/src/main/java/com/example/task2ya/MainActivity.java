@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity
     EditText edit2;
     EditText edit3;
     TextView tV1;
-    private static final int REQUEST_CODE = 1;
+    private int REQUEST_CODE = 1;
 
 
     @Override
@@ -32,8 +32,6 @@ public class MainActivity extends AppCompatActivity
          edit2 = findViewById(R.id.number2);
         edit3 = findViewById(R.id.number3);
         tV1 = findViewById(R.id.answer);
-
-
 
     }
     @Override
@@ -65,18 +63,26 @@ public class MainActivity extends AppCompatActivity
 
     public void calc(View view)
     {
-        if(!(edit1.getText().toString().isEmpty() || edit2.getText().toString().isEmpty() || edit3.getText().toString().isEmpty() )) {
+        String t1 = edit1.getText().toString();
+        String t2 = edit2.getText().toString();
+        String t3 = edit3.getText().toString();
+        if(!t1.equals("-") || t2.equals("-") || t3.equals("-"))
+        {
 
-            Intent getNumber = new Intent(this, calculate.class);
-            double a = Double.valueOf(edit1.getText().toString());
-            double b = Double.valueOf(edit2.getText().toString());
-            double c = Double.valueOf(edit3.getText().toString());
 
-            getNumber.putExtra("a", a);
-            getNumber.putExtra("b", b);
-            getNumber.putExtra("c", c);
-            startActivityForResult(getNumber, REQUEST_CODE);
+            if (!t1.equals("0")) {
+                if (!(t1.isEmpty() || t2.isEmpty() || t3.isEmpty())) {
+                    Intent getNumber = new Intent(this, calculate.class);
+                    double a = Double.valueOf(t1);
+                    double b = Double.valueOf(t2);
+                    double c = Double.valueOf(t3);
+
+                    getNumber.putExtra("a", a);
+                    getNumber.putExtra("b", b);
+                    getNumber.putExtra("c", c);
+                    startActivityForResult(getNumber, REQUEST_CODE);
+                }
+            }
         }
-
     }
 }
