@@ -66,23 +66,27 @@ public class MainActivity extends AppCompatActivity
         String t1 = edit1.getText().toString();
         String t2 = edit2.getText().toString();
         String t3 = edit3.getText().toString();
-        if(!t1.equals("-") || t2.equals("-") || t3.equals("-"))
+        try
         {
+            if (!t1.equals("-") || t2.equals("-") || t3.equals("-")) {
+                if (!t1.equals("0")) {
+                    if (!(t1.isEmpty() || t2.isEmpty() || t3.isEmpty())) {
+                        Intent getNumber = new Intent(this, calculate.class);
+                        double a = Double.valueOf(t1);
+                        double b = Double.valueOf(t2);
+                        double c = Double.valueOf(t3);
 
-
-            if (!t1.equals("0")) {
-                if (!(t1.isEmpty() || t2.isEmpty() || t3.isEmpty())) {
-                    Intent getNumber = new Intent(this, calculate.class);
-                    double a = Double.valueOf(t1);
-                    double b = Double.valueOf(t2);
-                    double c = Double.valueOf(t3);
-
-                    getNumber.putExtra("a", a);
-                    getNumber.putExtra("b", b);
-                    getNumber.putExtra("c", c);
-                    startActivityForResult(getNumber, REQUEST_CODE);
+                        getNumber.putExtra("a", a);
+                        getNumber.putExtra("b", b);
+                        getNumber.putExtra("c", c);
+                        startActivityForResult(getNumber, REQUEST_CODE);
+                    }
                 }
             }
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException(e);
         }
     }
 }
