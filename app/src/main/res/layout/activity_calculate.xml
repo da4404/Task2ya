@@ -20,6 +20,7 @@
         app:srcCompat="@drawable/parabola_up_no_root" />
 
     <TextView
+
         android:id="@+id/solvee"
         android:layout_width="334dp"
         android:layout_height="171dp"
