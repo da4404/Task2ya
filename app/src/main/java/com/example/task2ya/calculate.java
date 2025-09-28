@@ -33,7 +33,16 @@ public class calculate extends AppCompatActivity
 
     }
 
-
+    public String beutifull(double num, int limit)
+    {
+        String numStr = String.valueOf(num);
+        int lenNum = numStr.length();
+        if (lenNum < limit)
+        {
+            return numStr;
+        }
+        return String.format("%." + limit + "g", num);
+    }
     public String solve(double a, double b, double c)
     {
         if (a == 0)
@@ -52,10 +61,11 @@ public class calculate extends AppCompatActivity
             else
             {
                 double x = -c / b;
-                return "Single solution: x = " + x;
+                String xS = beutifull(x,5);
+                return "Single solution: x = " + xS;
             }
         }
-         double delta = b * b - 4 * a * c;
+        double delta = b * b - 4 * a * c;
 
         if (delta < 0)
         {
@@ -80,7 +90,8 @@ public class calculate extends AppCompatActivity
                 parabulal.setImageResource(R.drawable.parabola_down_one_root);
             }
             double x = -b / (2 * a);
-            return "Single solution: x = " + x;
+            String xS = beutifull(x,5);
+            return "Single solution: x = " + xS;
         }
         else
         {
@@ -95,7 +106,9 @@ public class calculate extends AppCompatActivity
             double sqrtDelta = Math.sqrt(delta);
             double x1 = (-b + sqrtDelta) / (2 * a);
             double x2 = (-b - sqrtDelta) / (2 * a);
-            return "Two solutions: x1 = " + x1 + ", x2 = " + x2;
+            String x1S = beutifull(x1,5);
+            String x2S = beutifull(x2,5);
+            return "Two solutions: x1 = " + x1S + ", x2 = " + x2S;
         }
     }
 
